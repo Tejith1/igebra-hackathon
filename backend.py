@@ -20,8 +20,8 @@ login_manager.login_view = 'login'
 # Set up logging
 logging.basicConfig(level=logging.DEBUG)
 
-# MongoDB configuration
-client = MongoClient('mongodb://localhost:27017/')
+# MongoDB Atlas configuration
+client = MongoClient('mongodb+srv://username:Dtejithreddy1@cluster0.7jp8n.mongodb.net/')
 db = client['user_database']
 users_collection = db['users']
 
@@ -196,7 +196,7 @@ def generate_pdf():
                 if url_match:
                     url = url_match.group(0)
                     line = line.replace(url, f'<a href="{url}">{url}</a>')
-                    story.append(Paragraph(line, style_normal))
+                    story.append(Paragraph(line, style_link))
                 else:
                     story.append(Paragraph(line, style_normal))
             else:
