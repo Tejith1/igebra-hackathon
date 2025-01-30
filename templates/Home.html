@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #1e1e2f;
+            color: #ffffff;
+        }
+        .nav-container {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            background-color: #2c2c3e;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-container a {
+            color: #ffffff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        .logo {
+            height: 800px; 
+        }
+    </style>
+</head>
+<body>
+    <div class="nav-container">
+        <div class="nav-left">
+            <a href="/home">Home</a>
+        </div>
+        <div class="nav-right">
+            <a href="/login">Login</a>
+            <a href="/register">Register</a>
+        </div>
+    </div>
+    <div>
+        <img src="static\logo.png" alt="Logo" class="logo">
+        <br>
+        <a href="/" class="home-link">Home</a>
+    </div>
+</body>
+</html>
