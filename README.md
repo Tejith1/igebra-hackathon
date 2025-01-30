@@ -74,7 +74,7 @@ Ensure you set the following environment variables for the project to run:
 Example of setting environment variables:
 ```sh
 export GROQ_API_KEY="your-groq-api-key"
-
+```
 ## API Endpoints
 POST /query
 Generate a response from the AI assistant based on the user's query.
@@ -112,6 +112,7 @@ License
 This project is licensed under the MIT License - see the LICENSE file for details.
 
 Contact
-Tejith1 - Your Email
+Tejith1 - dtejithreddy@gmail.com
 
-Project Link: https://github.com/Tejith1/your-repo-name
+Project Link: https://github.com/Tejith1/igebra-hackathon
+
