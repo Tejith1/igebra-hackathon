@@ -162,6 +162,15 @@ def generate_pdf():
             alignment=1,
             fontName='Helvetica-Bold'
         )
+        style_subtitle = ParagraphStyle(
+            'Subtitle',
+            parent=styles['Heading2'],
+            fontSize=14,
+            leading=18,
+            spaceAfter=10,
+            textColor='black',
+            fontName='Helvetica-Bold'
+        )
         style_link = ParagraphStyle(
             'Link',
             parent=styles['BodyText'],
@@ -181,13 +190,17 @@ def generate_pdf():
             story.append(Spacer(1, 12))
 
         for line in content:
-            # Extract URLs and create clickable links without additional text
-            parts = re.split(r'(http[s]?://\S+)', line)
-            for part in parts:
-                if re.match(r'http[s]?://\S+', part):
-                    story.append(Paragraph(f'<a href="{part}">{part}</a>', style_link))
-                elif part.strip():  # Add normal text parts only if they are not empty
-                    story.append(Paragraph(part, style_normal))
+            # Check if line contains a URL
+            if "http" in line:
+                url_match = re.search(r'http[s]?://\S+', line)
+                if url_match:
+                    url = url_match.group(0)
+                    line = line.replace(url, f'<a href="{url}">{url}</a>')
+                    story.append(Paragraph(line, style_normal))
+                else:
+                    story.append(Paragraph(line, style_normal))
+            else:
+                story.append(Paragraph(line, style_normal))
             story.append(Spacer(1, 12))
 
         doc.build(story)
