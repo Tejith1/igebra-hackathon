@@ -74,3 +74,44 @@ Ensure you set the following environment variables for the project to run:
 Example of setting environment variables:
 ```sh
 export GROQ_API_KEY="your-groq-api-key"
+
+## API Endpoints
+POST /query
+Generate a response from the AI assistant based on the user's query.
+
+Request Body
+JSON
+{
+  "query": "Describe the topic of artificial intelligence."
+}
+Response
+JSON
+{
+  "response": "Artificial intelligence (AI) is the simulation of human intelligence in machines..."
+}
+POST /generate_pdf
+Generate a PDF from the chat response.
+
+Request Body
+JSON
+{
+  "text": "Artificial intelligence (AI) is the simulation of human intelligence in machines..."
+}
+Response
+Returns a downloadable PDF file.
+
+Contributing
+If you want to contribute to this project, please follow these steps:
+
+Fork the repository.
+Create a new branch: git checkout -b my-feature-branch
+Make your changes and commit them: git commit -m 'Add some feature'
+Push to the branch: git push origin my-feature-branch
+Submit a pull request.
+License
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+Contact
+Tejith1 - Your Email
+
+Project Link: https://github.com/Tejith1/your-repo-name
