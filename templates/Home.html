@@ -5,34 +5,167 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Page</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #1e1e2f;
-            color: #ffffff;
-        }
-        .nav-container {
-            position: absolute;
-            top: 0;
-            width: 100%;
-            background-color: #2c2c3e;
-            padding: 10px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .nav-container a {
-            color: #ffffff;
-            text-decoration: none;
-            margin: 0 10px;
-        }
-        .logo {
-            height: 800px; 
-        }
+        :root {
+    --bg-primary: #0F172A;
+    --bg-secondary: rgba(30, 41, 59, 0.95);
+    --accent-color: #3B82F6;
+    --text-primary: #FFFFFF;
+    --text-secondary: #94A3B8;
+    --nav-height: 70px;
+    --gradient-bg: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes logoFloat {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0px); }
+}
+
+/* Base styles */
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    margin: 0;
+    min-height: 100vh;
+    background: var(--gradient-bg);
+    color: var(--text-primary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+/* Background pattern overlay */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 20% 30%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(99, 102, 241, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+/* Navigation */
+.nav-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--nav-height);
+    background: var(--bg-secondary);
+    backdrop-filter: blur(10px);
+    padding: 0 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.nav-left, .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.nav-container a {
+    color: var(--text-primary);
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    font-size: 16px;
+}
+
+.nav-container a:hover {
+    background: rgba(59, 130, 246, 0.1);
+    color: var(--accent-color);
+    transform: translateY(-1px);
+}
+
+/* Logo container */
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: var(--nav-height);
+    animation: fadeIn 1s ease-out;
+}
+
+.logo {
+    height: 600px;
+    max-width: 90vw;
+    object-fit: contain;
+    animation: logoFloat 6s ease-in-out infinite;
+    filter: drop-shadow(0 0 20px rgba(59, 130, 246, 0.2));
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.02);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .nav-container {
+        padding: 0 20px;
+    }
+
+    .nav-container a {
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+
+    .logo {
+        height: 400px;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-container {
+        padding: 0 10px;
+    }
+
+    .nav-left, .nav-right {
+        gap: 10px;
+    }
+
+    .nav-container a {
+        padding: 6px 10px;
+        font-size: 13px;
+    }
+
+    .logo {
+        height: 800px;
+    }
+}
+
+/* Optional: Add a gradient line under the navbar */
+.nav-container::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(
+        to right,
+        transparent,
+        var(--accent-color),
+        transparent
+    );
+}
     </style>
 </head>
 <body>
@@ -47,8 +180,6 @@
     </div>
     <div>
         <img src="static\logo.png" alt="Logo" class="logo">
-        <br>
-        <a href="/" class="home-link">Home</a>
     </div>
 </body>
 </html>
