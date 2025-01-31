@@ -26,7 +26,7 @@ db = client['user_database']
 users_collection = db['users']
 
 # Load Groq API key from environment variable
-GROQ_API_KEY = "YOUR_API_KEY"
+GROQ_API_KEY = "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"
 if not GROQ_API_KEY:
     raise ValueError("GROQ_API_KEY environment variable not set")
 
